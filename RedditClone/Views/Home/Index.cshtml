@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RedditClone.Models.RedditPost>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink("New Post", "Create", "RedditPosts")
+}
+
+    @*@foreach (var post in Model)
+        {
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="@post.Img" src="..." alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">@post.Title</h4>
+                    @post.Body
+                </div>
+            </div>
+        }*@
+
+@if (!HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    <form class="col-sm-offset-5">
+
+        <input name="username" placeholder="username" id="username" />
+        <label for="username" class="hidden">Username</label>
+
+
+        <input name="password" placeholder="password" id="password" />
+        <label for="password" class="hidden">Password</label>
+
+        <div>
+            <input type="submit" value="login" />
+        </div>
+    </form>
+}
