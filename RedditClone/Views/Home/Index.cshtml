@@ -1,44 +1,92 @@
 ﻿@model IEnumerable<RedditClone.Models.RedditPost>
 @using Microsoft.AspNet.Identity
+@using RedditClone.Models
+@using RedditClone.ViewModels
 
 @{
     ViewBag.Title = "Home Page";
 }
 
 
-@if (HttpContext.Current.User.Identity.IsAuthenticated)
-{
-    @Html.ActionLink("New Post", "Create", "RedditPosts")
-}
-
-    @*@foreach (var post in Model)
+<div class="row">
+    <div class="col-sm-8 table-bordered table-striped">
+        @foreach (var post in Model)
         {
+
+            <br />
             <div class="media">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="@post.Img" src="..." alt="...">
-                    </a>
+                <div class="media-left media-middle">
+                    <i class="glyphicon glyphicon-arrow-up"></i>
+                    #@post.UpVotes
+                    <i class="glyphicon glyphicon-arrow-down"></i>
+                </div>
+                <div class="media-left media-middle">
+                    <img class="media-object" height="80" src="~/Images/elle.jpg" alt="..." />
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">@post.Title</h4>
-                    @post.Body
+                    <a href="~/Views/RedditPosts/Details.cshtml">
+                        <h4 class="media-heading">@post.Title</h4>
+                    </a>
+                    <div>
+                        submitted&emsp;<span>
+                            @post.DatePosted.ToShortDateString()
+                        </span>&emsp;by&emsp;<span>@post.User.UserName</span>
+                    </div>
+                    <div>
+                        @post.Body
+                    </div>
+                    <div>
+                        <a>@post.Comments.Count()</a>
+                        <a><span>comments</span></a>
+                        <span>@Html.ActionLink("Share", "Share", "RedditPosts")</span>
+                    </div>
                 </div>
             </div>
-        }*@
+        }
+    </div>
 
-@if (!HttpContext.Current.User.Identity.IsAuthenticated)
-{
-    <form class="col-sm-offset-5">
+    <br />
+    @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <div class="col-sm-4 table-bordered">
+            <br />
+            @*@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {*@
+            @*@Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
 
-        <input name="username" placeholder="username" id="username" />
-        <label for="username" class="hidden">Username</label>
+            @*@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
 
+            <input name="username" placeholder="username" id="username" size="10" />
+            <label for="username" class="hidden">Username</label>
 
-        <input name="password" placeholder="password" id="password" />
-        <label for="password" class="hidden">Password</label>
+            @*@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
 
-        <div>
-            <input type="submit" value="login" />
+            <input name="password" placeholder="password" id="password" size="10" />
+            <label for="password" class="hidden">Password</label>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox">
+                        @*@Html.CheckBoxFor(m => m.LoginVM.RememberMe)
+                            @Html.LabelFor(m => m.LoginVM.RememberMe)*@
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <input type="submit" value="login" />
+            </div>
+            @*}*@
+            <br />
         </div>
-    </form>
-}
+    }
+    <div class="btn-lg col-sm-4">
+        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("New Post", "Create", "RedditPosts")
+        }
+
+    </div>
+</div>

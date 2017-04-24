@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RedditClone.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RedditClone.Controllers
 {
@@ -12,8 +13,15 @@ namespace RedditClone.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()
-        {         
-            return View();
+        {
+            ViewBag.Title = "What's Hot";
+            var db = new ApplicationDbContext();
+            var posts = db.Posts.OrderByDescending(o=>o.DatePosted).ToList();
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.UserId = User.Identity.GetUserId();
+            }
+            return View(posts);
         }
     }
 }

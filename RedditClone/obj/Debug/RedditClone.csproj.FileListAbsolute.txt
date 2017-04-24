@@ -120,3 +120,7 @@ C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\bin
 C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\bin\roslyn\System.Xml.XmlDocument.dll
 C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\bin\roslyn\System.Xml.XPath.dll
 C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.CUDpostsRisToCome.resources
+C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.CRUDpostsCompleted.resources
+C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.PostCommentRelationship.resources
+C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.GuestAndUserViewSet.resources

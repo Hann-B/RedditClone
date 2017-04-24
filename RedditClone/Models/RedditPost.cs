@@ -17,5 +17,7 @@ namespace RedditClone.Models
 
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
+
+        public virtual IEnumerable<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 }

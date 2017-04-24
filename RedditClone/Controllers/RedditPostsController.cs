@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RedditClone.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RedditClone.Controllers
 {
@@ -17,17 +18,24 @@ namespace RedditClone.Controllers
         // GET: RedditPosts
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            ViewBag.Title = "What's Hot";
+            var db = new ApplicationDbContext();
+            var posts = db.Posts.ToList();
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.UserId = User.Identity.GetUserId();
+            }
+            return View(posts);
         }
 
         // GET: RedditPosts/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string UserId)
         {
-            if (id == null)
+            if (UserId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RedditPost redditPost = db.Posts.Find(id);
+            RedditPost redditPost = db.Posts.Find(UserId);
             if (redditPost == null)
             {
                 return HttpNotFound();
@@ -50,6 +58,7 @@ namespace RedditClone.Controllers
         {
             if (ModelState.IsValid)
             {
+                redditPost.UserId = HttpContext.User.Identity.GetUserId();
                 db.Posts.Add(redditPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
