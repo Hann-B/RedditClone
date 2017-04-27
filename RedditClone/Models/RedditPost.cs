@@ -15,6 +15,8 @@ namespace RedditClone.Models
         public DateTime DatePosted { get; set; } = DateTime.Now;
         public string Img { get; set; }
 
+        public virtual IEnumerable<Vote> Votes { get; set; } = new HashSet<Vote>();
+
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 

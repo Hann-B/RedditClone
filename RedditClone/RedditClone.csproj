@@ -106,12 +106,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -186,11 +195,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RedditPostsController.cs" />
+    <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,12 +233,29 @@
     <Compile Include="Migrations\201704240230581_GuestAndUserViewSet.Designer.cs">
       <DependentUpon>201704240230581_GuestAndUserViewSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704261831523_VotePostUserFKPK.cs" />
+    <Compile Include="Migrations\201704261831523_VotePostUserFKPK.Designer.cs">
+      <DependentUpon>201704261831523_VotePostUserFKPK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261833524_VotePostUserFKPK1.cs" />
+    <Compile Include="Migrations\201704261833524_VotePostUserFKPK1.Designer.cs">
+      <DependentUpon>201704261833524_VotePostUserFKPK1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261857018_VotePostUserFKPK2.cs" />
+    <Compile Include="Migrations\201704261857018_VotePostUserFKPK2.Designer.cs">
+      <DependentUpon>201704261857018_VotePostUserFKPK2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704262212316_changeTables.cs" />
+    <Compile Include="Migrations\201704262212316_changeTables.Designer.cs">
+      <DependentUpon>201704262212316_changeTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RedditPost.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\HomePageVM.cs" />
@@ -269,6 +297,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Vote.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -313,12 +342,14 @@
     <Content Include="Views\RedditPosts\Details.cshtml" />
     <Content Include="Views\RedditPosts\Edit.cshtml" />
     <Content Include="Views\RedditPosts\Index.cshtml" />
+    <Content Include="Views\Shared\_voteDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Posts\" />
+    <Folder Include="Views\Vote\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -344,6 +375,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704240230581_GuestAndUserViewSet.resx">
       <DependentUpon>201704240230581_GuestAndUserViewSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261831523_VotePostUserFKPK.resx">
+      <DependentUpon>201704261831523_VotePostUserFKPK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261833524_VotePostUserFKPK1.resx">
+      <DependentUpon>201704261833524_VotePostUserFKPK1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261857018_VotePostUserFKPK2.resx">
+      <DependentUpon>201704261857018_VotePostUserFKPK2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704262212316_changeTables.resx">
+      <DependentUpon>201704262212316_changeTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

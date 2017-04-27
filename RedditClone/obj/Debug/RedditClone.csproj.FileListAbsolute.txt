@@ -124,3 +124,13 @@ C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj
 C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.CRUDpostsCompleted.resources
 C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.PostCommentRelationship.resources
 C:\Users\Hanna\documents\visual studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.GuestAndUserViewSet.resources
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.VotePostUserFKPK.resources
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.VotePostUserFKPK1.resources
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\bin\System.Net.Http.Formatting.dll
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\bin\System.Web.Http.dll
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\bin\System.Web.Http.WebHost.dll
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\bin\System.Net.Http.Formatting.xml
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\bin\System.Web.Http.xml
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\bin\System.Web.Http.WebHost.xml
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.VotePostUserFKPK2.resources
+C:\Users\Hanna\Documents\Visual Studio 2017\Projects\RedditClone\RedditClone\obj\Debug\RedditClone.Migrations.changeTables.resources

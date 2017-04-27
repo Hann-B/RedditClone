@@ -1,0 +1,13 @@
+﻿@model RedditClone.Models.RedditPost
+
+
+<button class="btn-link" onclick="upVote(@Model.Id)">
+    <i class="glyphicon glyphicon-arrow-up" value="content"></i>
+</button>
+
+<span>#@(Model.UpVotes - Model.DownVotes)</span>
+
+<button class="btn-link" onclick="downVote(@Model.Id)">
+    <i class="glyphicon glyphicon-arrow-down"></i>
+</button>
+

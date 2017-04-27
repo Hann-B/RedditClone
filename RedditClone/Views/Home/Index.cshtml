@@ -12,19 +12,17 @@
     <div class="col-sm-8 table-bordered table-striped">
         @foreach (var post in Model)
         {
-
             <br />
-            <div class="media">
-                <div class="media-left media-middle">
-                    <i class="glyphicon glyphicon-arrow-up"></i>
-                    #@post.UpVotes
-                    <i class="glyphicon glyphicon-arrow-down"></i>
+            <div class="media col-sm-2">
+                <div class="media-left media-middle" id="voteBox-@post.Id">        
+                    @Html.Partial("_voteDisplay", post)
                 </div>
-                <div class="media-left media-middle">
-                    <img class="media-object" height="80" src="~/Images/elle.jpg" alt="..." />
-                </div>
+            </div>
+            <div class="media-left media-middle">
+                <img class="media-object" height="80" src="~/Images/elle.jpg" alt="..." />
+            </div>
                 <div class="media-body">
-                    <a href="~/Views/RedditPosts/Details.cshtml">
+                    <a href="~/Views/RedditPosts/Details.cshtml/@post.Id">
                         <h4 class="media-heading">@post.Title</h4>
                     </a>
                     <div>
@@ -41,9 +39,9 @@
                         <span>@Html.ActionLink("Share", "Share", "RedditPosts")</span>
                     </div>
                 </div>
-            </div>
         }
     </div>
+
 
     <br />
     @if (!HttpContext.Current.User.Identity.IsAuthenticated)
